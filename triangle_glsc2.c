@@ -70,7 +70,7 @@ int main() {
 		 0.0,  0.5,  0.0
 	};
 
-	// VAO ve VBO initialize et, bağla ve verileri GPU belleğine kopyala
+	// VBO initialize et, bağla ve verileri GPU belleğine kopyala
 	GLuint VBO;
 	glGenBuffers(1, &VBO);
 
