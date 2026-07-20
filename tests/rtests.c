@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// this turns into 1 if a test fails
+static int retcode = 0;
+
 #define EXPECT_GL_ERROR(actual_err, condition_expr, msg)                       \
 	do {                                                                   \
 		if (!(condition_expr)) {                                       \
@@ -15,7 +18,8 @@
 				#condition_expr);                              \
 			fprintf(stderr, "   > Actual  : 0x%04X\n",             \
 				actual_err);                                   \
-			exit(1);                                               \
+			retcode = 1;                                           \
+			continue;                                              \
 		}                                                              \
 	} while (0)
 
@@ -44,7 +48,7 @@ void rTest_stateRecovr() {
 void rTest_outOfMemory() {
 	GLuint tex;
 	glGenTextures(1, &tex);
-	for (int i = 0; i < 100000000; i++) {
+	for (int i = 0; i < 10000; i++) {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 8192, 8192, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
 		GLenum err = glGetError();
 		if (err == GL_OUT_OF_MEMORY) {

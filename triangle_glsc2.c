@@ -15,7 +15,7 @@ const char* fragmentShaderSource = "#version 100\n"
 	"precision mediump float;\n"
 	"void main()\n"
 	"{\n"
-	"   gl_FragColor = vec4(1.0f, 0.3f, 0.3f, 1.0f);\n" // vec4(R, G, B, A)
+	"   gl_FragColor = vec4(0.0f, 0.7f, 0.7f, 1.0f);\n" // vec4(R, G, B, A)
 	"}\0";
 
 int main() {
